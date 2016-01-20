@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="9dp"
+    android:layout_marginRight="9dp"
+    android:layout_marginTop="6dp"
+    android:orientation="horizontal"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="3dp">
+
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/img_imageView"
+            android:layout_width="110dp"
+            android:layout_height="80dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:scaleType="fitCenter"
+            android:src="@mipmap/defaultimage"/>
+
+        <TextView
+            android:id="@+id/tv_csdn_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_toRightOf="@id/img_imageView"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="弄死你个老师可能日恩生本人不能深刻陌生人是男人帮牛逼"
+            android:textColor="#000000"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tv_csdn_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/img_imageView"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="师可能日恩生本可能日恩x可能日xxxxxx恩生本可能逼"
+            android:textColor="#70000000"
+            android:textSize="12sp"/>
+
+        <TextView
+            android:id="@+id/tv_csdn_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="3dp"
+            android:text="2015.12.3"
+            android:textSize="12sp"/>
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

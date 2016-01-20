@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">你妹的</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="NoMoreNewData">木有更多数据啦</string>
+
+    <string name="myFreeTime">我的工作之余</string>
+    <string name="myConnection">hzwsunshine@163.com</string>
+    <string name="aphorism">少壮真当努力，年一过往，何可攀援?\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t————曹丕\n\n</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="exit_press_again">再按一次退出程序</string>
+
+    <string name="update_new_data_num">更新了***条数据</string>
+    <string name="not_allow_refresh">已设置非WIFI时不允许联网</string>
+    <string name="not_connect_netWork">网络已断开</string>
+
+    <string name="funnyImage">无聊图</string>
+    <string name="beautyImage">妹子图</string>
+    <string name="CSDN_News">CSDN</string>
+    <string name="FuLiImage">趣图</string>
+
+    <string name="menu_other">其他</string>
+    <string name="menu_setting">设置</string>
+    <string name="menu_exit">退出</string>
+    <string name="menu_about">关于APP...</string>
+
+    <string name="menu_56">56区</string>
+    <string name="menu_test">测试</string>
+    <string name="menu_test1">实验</string>
+
+    <string name="csdn_news">业 界</string>
+    <string name="csdn_mobile">移 动</string>
+    <string name="csdn_develope">研 发</string>
+    <string name="csdn_magazine">程序员</string>
+    <string name="csdn_yun">云计算</string>
+
+    <string name="inputKey">请输入密码</string>
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+    <string name="openKey">已开启密码保护</string>
+    <string name="closeKey">已关闭密码保护</string>
+    <string name="keyError">密码错误</string>
+
+    <string name="copyImgUrl">图片链接已复制到剪切板</string>
+    <string name="copyCsdnUrl">该条链接已复制到剪切板</string>
+    <string name="downloadImg">图片已保存</string>
+    <string name="clearCache">已清除图片缓存</string>
+
+    <string name="exitTitle">确定退出？</string>
+
+    <string name="fuli_comments">精彩评论</string>
+    <string name="fuli_hot_comment">热门评论</string>
+    <string name="fuli_new_comment">最新评论</string>
+</resources>

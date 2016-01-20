@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    package="com.hzwsunshine.freetime"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- 写入外部存储 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 手机震动 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- 网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- 获取位置，用于测试 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:name=".Application.Application"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:screenOrientation="portrait"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Activity.SplashActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashActivityTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.MainActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activity.SettingActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activity.ShowImageActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <meta-data
+            android:name="com.hzwsunshine.freetime.Application.AppGlideMoudle"
+            android:value="GlideModule"/>
+
+        <activity
+            android:name=".Activity.PassWordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysVisible">
+        </activity>
+        <activity
+            android:name=".Activity.CSDNWebViewActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".Activity.FuLiCommentActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".Zero.Test2Activity">
+        </activity>
+        <activity android:name=".Zero.TestActivity">
+        </activity>
+
+    </application>
+
+</manifest>

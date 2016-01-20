@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/rl_splash"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hzwsunshine.freetime.Activity.SplashActivity">
+
+    <TextView
+        android:id="@+id/tv_begin_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_horizontal|bottom"
+        android:lineSpacingExtra="12dp"
+        android:padding="8dp"
+        android:paddingBottom="70dp"
+        android:text="@string/aphorism"
+        android:textColor="@color/themeColor_blue_trans"
+        android:textSize="18sp"/>
+</RelativeLayout>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/relativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#282829"
+    tools:context="com.hzwsunshine.freetime.Activity.ShowImageActivity">
+
+    <uk.co.senab.photoview.PhotoView
+        android:id="@+id/img_showImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/fl_bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="50dp"
+        android:background="#10000000"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/img_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical"
+            android:src="@mipmap/ic_arrow_back_white_36dp"/>
+
+        <ImageView
+            android:id="@+id/img_copyUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|center_vertical"
+            android:src="@mipmap/ic_copyright_white_36dp"/>
+
+        <ImageView
+            android:id="@+id/img_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:src="@mipmap/ic_file_download_white_36dp"/>
+    </FrameLayout>
+</RelativeLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.hzwsunshine.freetime.Activity.SettingActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/TextStyle_Setting"
+            android:text="基本设置"
+            android:textColor="@color/themeColor_blue"
+            android:textSize="12sp"/>
+
+        <FrameLayout
+            android:id="@+id/fl_wifiConn"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/TextStyle_Setting"
+                android:text="非WIFI时加载图片"/>
+
+            <Switch
+                android:id="@+id/switch_wifiConn"
+                style="@style/SwitchStyle"/>
+
+            <TextView
+                android:id="@+id/tv_wifiConn"
+                style="@style/TextStyle_Setting"
+                android:layout_gravity="bottom"
+                android:text="土豪，我们做朋友吧！"
+                android:textColor="#80000000"
+                android:background="@drawable/bg_fade"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_key"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/TextStyle_Setting"
+                android:text="密码保护"/>
+
+            <Switch
+                android:id="@+id/switch_key"
+                style="@style/SwitchStyle"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_key_nomal"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:id="@+id/tv_keyNormal"
+                style="@style/TextStyle_Setting"
+                android:text="普通方式"/>
+
+            <Switch
+                android:id="@+id/switch_key_normal"
+                style="@style/SwitchStyle"/>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_key_special"
+            android:layout_width="match_parent"
+            android:layout_height="52dp">
+
+            <TextView
+                android:id="@+id/tv_keySpecial"
+                style="@style/TextStyle_Setting"
+                android:text="特殊方式"/>
+
+            <Switch
+                android:id="@+id/switch_key_special"
+                style="@style/SwitchStyle"/>
+
+            <TextView
+                android:id="@+id/tv_keySpecial_text"
+                style="@style/TextStyle_Setting"
+                android:layout_gravity="bottom"
+                android:text="任意输入两个数字，点击3次“请输入密码”"
+                android:textColor="@color/gravy"
+                android:textSize="12sp"
+                android:visibility="gone"/>
+        </FrameLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.3dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#40000000"/>
+
+        <TextView
+            style="@style/TextStyle_Setting"
+            android:text="其他设置"
+            android:textColor="@color/themeColor_blue"
+            android:textSize="12sp"/>
+
+        <Button
+            android:id="@+id/btn_clear_cache"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="16dp"
+            android:text="清除缓存"
+            android:textColor="#000000"
+            android:textSize="15dp"/>
+
+        <Button
+            android:id="@+id/btn_about_app"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="16dp"
+            android:text="@string/menu_about"
+            android:textColor="#000000"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+</ScrollView>

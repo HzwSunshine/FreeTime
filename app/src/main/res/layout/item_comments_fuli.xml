@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.hzwsunshine.freetime.Views.CircleImageView
+            android:id="@+id/img_comment_userIcon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"/>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tv_comment_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:text="用户名"
+                android:textColor="@color/themeColor_blue_trans"
+                android:textSize="12sp"/>
+
+            <TextView
+                android:id="@+id/tv_comment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:text="2015.12.12"
+                android:textColor="@color/gravy"
+                android:textSize="11sp"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_comment_likeNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:drawableLeft="@mipmap/like"
+            android:drawablePadding="5dp"
+            android:minWidth="33dp"
+            android:textColor="@color/gravy"
+            android:textSize="13sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="43dp"
+        android:layout_marginTop="5dp"
+        android:paddingRight="3dp"
+        android:text="你好哇"
+        android:textColor="@color/themeColor_dark"
+        android:textSize="14sp"/>
+
+    <View
+        android:id="@+id/v_comment_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.3dp"
+        android:background="#40000000"/>
+</LinearLayout>

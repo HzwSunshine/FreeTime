@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_funny_image"
+            android:icon="@mipmap/ic_color_lens_black_36dp"
+            android:title="@string/funnyImage"/>
+        <item
+            android:id="@+id/nav_beauty_image"
+            android:icon="@mipmap/ic_face_black_36dp"
+            android:title="@string/beautyImage"/>
+        <item
+            android:id="@+id/nav_fuli_image"
+            android:icon="@mipmap/ic_insert_emoticon_black_36dp"
+            android:title="@string/FuLiImage"/>
+        <item
+            android:id="@+id/nav_csdn"
+            android:icon="@mipmap/ic_toys_black_36dp"
+            android:title="@string/CSDN_News"/>
+    </group>
+
+    <item android:title="@string/menu_other">
+        <menu>
+            <item
+                android:id="@+id/nav_setting"
+                android:icon="@mipmap/ic_settings_black_36dp"
+                android:title="@string/menu_setting"/>
+            <item
+                android:id="@+id/nav_exit"
+                android:icon="@mipmap/ic_highlight_off_black_36dp"
+                android:title="@string/menu_exit"/>
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_56">
+        <menu>
+            <item
+                android:id="@+id/nav_test"
+                android:icon="@mipmap/ic_info_outline_black_36dp"
+                android:title="@string/menu_test"/>
+            <item
+                android:id="@+id/nav_test1"
+                android:icon="@mipmap/ic_lightbulb_outline_black_36dp"
+                android:title="@string/menu_test1"/>
+            <item
+                android:title=""/>
+        </menu>
+    </item>
+
+</menu>

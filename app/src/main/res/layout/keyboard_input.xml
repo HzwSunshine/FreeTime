@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/ll_comment_input"
+    android:gravity="center_vertical"
+    android:background="#FFFFFF"
+    android:visibility="gone"
+    android:orientation="horizontal"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp">
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:src="@mipmap/ic_info_outline_black_36dp"/>
+
+    <EditText
+        android:id="@+id/et_comment_reply"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:hint="回复"
+        android:paddingLeft="5dp"
+        android:textColor="@color/themeColor_dark_trans"
+        android:textSize="14sp"/>
+
+    <ImageView
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_margin="5dp"
+        android:src="@mipmap/ic_toys_black_36dp"/>
+
+</LinearLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="BaseAppTheme">
+        <item name="android:colorPrimary">@color/themeColor_blue</item>
+        <item name="android:colorPrimaryDark">@color/themeColor_blue_trans</item>
+        <!--<item name="android:navigationBarColor">@color/themeColor_blue</item>-->
+        <!--<item name="android:windowTranslucentStatus">true</item>-->
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+</resources>

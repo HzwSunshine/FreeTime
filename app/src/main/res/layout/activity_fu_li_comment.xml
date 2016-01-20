@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.hzwsunshine.freetime.Activity.FuLiCommentActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_comment_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="9dp"
+        android:paddingRight="9dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+
+    <ProgressBar
+        android:id="@+id/pb_comment_progressBar"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

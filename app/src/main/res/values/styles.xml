@@ -1,0 +1,110 @@
+<resources>
+
+    <style name="BaseAppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/ActivitySwitchAnim</item>
+    </style>
+
+    <style name="SplashActivityTheme" parent="BaseAppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="tabIndicator">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:background">@drawable/tabindicator_background</item>
+    </style>
+
+    <style name="password_textView">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:textColor">#00A79D</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:background">@drawable/password_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">1</item>
+    </style>
+
+    <!-- ***************Activity切换动画***************begin*********-->
+    <style name="ActivitySwitchAnim" parent="@android:style/Animation.Activity">
+        <!-- Activity A跳转到Activity B时Activity A退出动画-->
+        <item name="android:activityOpenExitAnimation">@anim/anim_translate_exit</item>
+        <!-- Activity A跳转到Activity B时Activity B进入动画-->
+        <item name="android:activityOpenEnterAnimation">@anim/anim_translate_in</item>
+        <!-- Activity B返回Activity A时ActivityB 的退出动画-->
+        <item name="android:activityCloseExitAnimation">@anim/anim_translate_out</item>
+        <!-- Activity B返回Activity A时ActivityA 的进入动画-->
+        <item name="android:activityCloseEnterAnimation">@anim/anim_translate_enter</item>
+    </style>
+    <!-- ***************Activity切换动画***************end**********-->
+
+    <style name="SwitchStyle">
+        <item name="android:textOff"></item>
+        <item name="android:textOn"></item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical|right</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:clickable">false</item>
+        <item name="android:checked">false</item>
+        <item name="android:duplicateParentState">true</item>
+        <!--<item name="android:maxWidth">60dp</item>-->
+    </style>
+
+    <style name="TextStyle_Setting">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+
+    <style name="keyInput_Setting">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:inputType">number</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:layout_marginLeft">23dp</item>
+        <item name="android:layout_marginRight">23dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:maxLength">4</item>
+    </style>
+
+    <!-- ************************ProgressDialog样式设置***********begin******************-->
+    <style name="Loading_dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">false</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+    </style>
+    <!-- ************************ProgressDialog样式设置***********end*******************-->
+
+    <style name="popupWindowButtonStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:textColor">@color/themeColor_dark</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">14sp</item>
+        <!--android:background="?android:attr/actionBarItemBackground"-->
+        <!--android:background="?android:attr/selectableItemBackground"-->
+        <!--actionBarItemBackground   5.0以上超出边界圆形水波纹-->
+        <!--selectableItemBackground  5.0以上边界内圆形水波纹-->
+    </style>
+
+</resources>
