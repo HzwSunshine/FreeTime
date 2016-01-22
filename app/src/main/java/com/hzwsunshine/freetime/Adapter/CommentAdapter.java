@@ -29,8 +29,7 @@ public class CommentAdapter extends BaseRVAdapter {
         holder.setTextView(R.id.tv_comment_time, CommonUtils.timeFormat(time));
         holder.setTextView(R.id.tv_comment_likeNum, mList.get(position).getLikes());
         ImageLoaderUtils.displayImage(holder.getImageView(R.id.img_comment_userIcon),
-                mList.get(position).getAuthor_avatar(), R.mipmap.ic_face_black_36dp,
-                R.mipmap.ic_face_black_36dp);
+                mList.get(position).getAuthor_avatar(), R.drawable.fuli_image, R.drawable.fuli_image);
         //设置评论
         String text = mList.get(position).getContent();
         SpannableStringBuilder builder = new SpannableStringBuilder(text);

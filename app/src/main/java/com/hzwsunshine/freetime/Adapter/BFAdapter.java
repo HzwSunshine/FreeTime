@@ -25,7 +25,7 @@ public class BFAdapter extends BaseRVAdapter {
     public void onBindViewHolder(ViewHolder holder, int position) {
         String imgUrl = mList.get(position).getPics().get(0);
         ImageLoaderUtils.displayImage(holder.getImageView(R.id.img), imgUrl,
-                R.mipmap.defaultimage, R.mipmap.defaultimage);
+                R.drawable.fuli_image, R.drawable.fuli_image);
         holder.getImageView(R.id.img).setAdjustViewBounds(true);
         holder.setTextView(R.id.tv_time, CommonUtils.timeFormat(mList.get(position).getComment_date()));
         holder.setTextView(R.id.tv_like, mList.get(position).getVote_positive());//喜欢人数

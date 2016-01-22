@@ -15,6 +15,7 @@ import java.util.List;
 
 /**
  * Created by 何志伟 on 2016/1/12.
+ * 趣图图片适配器
  */
 public class FuLiAdapter extends BaseRVAdapter {
     private List<FuLiImageBean> mList;
@@ -29,13 +30,13 @@ public class FuLiAdapter extends BaseRVAdapter {
         String imgUrl = mList.get(position).getWpic_middle();
         int imageWidth = Integer.parseInt(mList.get(position).getWpic_m_width());
         int imageHeight = Integer.parseInt(mList.get(position).getWpic_m_height());
-        int imageViewWidth = ViewUtils.getScreenWH()[0] -
-                ViewUtils.dip2px(holder.getImageView(R.id.img).getContext(), 44);
+        int imageViewWidth = ViewUtils.getScreenWidth(holder.getImageView(R.id.img).getContext())
+                - ViewUtils.dip2px(holder.getImageView(R.id.img).getContext(), 44);
         ViewGroup.LayoutParams layoutParams = holder.getImageView(R.id.img).getLayoutParams();
         layoutParams.height = imageHeight * imageViewWidth / imageWidth;
         holder.getImageView(R.id.img).setLayoutParams(layoutParams);
         ImageLoaderUtils.displayImage(holder.getImageView(R.id.img), imgUrl,
-                R.mipmap.defaultimage, R.mipmap.defaultimage);
+                R.drawable.fuli_image, R.drawable.fuli_image);
         //设置不用的控件属性
         holder.getTextView(R.id.tv_userName).setVisibility(View.GONE);
         holder.getTextView(R.id.tv_commentNum).setVisibility(View.VISIBLE);
