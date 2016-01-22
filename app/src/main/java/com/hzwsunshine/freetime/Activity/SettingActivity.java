@@ -1,11 +1,15 @@
 package com.hzwsunshine.freetime.Activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Switch;
@@ -13,10 +17,15 @@ import android.widget.TextView;
 
 import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
+import com.hzwsunshine.freetime.Utils.CommonUtils;
 import com.hzwsunshine.freetime.Utils.SharedUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
+import java.io.File;
+import java.text.DecimalFormat;
+
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -46,6 +55,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     TextView tvKeyNormal;
     @InjectView(R.id.tv_keySpecial)
     TextView tvKeySpecial;
+    @InjectView(R.id.fl_clear_cache)
+    FrameLayout clearCache;
+    @InjectView(R.id.tv_cache_size)
+    TextView cacheSize;
 
     @Override
     protected void onCreated(Bundle savedInstanceState) {
@@ -59,6 +72,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         setBackground(flKey);
         setBackground(flKeyNomal);
         setBackground(flKeySpecial);
+        setBackground(clearCache);
 
         String netConn = (String) SharedUtils.get(this, "net_conn", String.class);
         if (netConn.equals("wifi_only")) {
@@ -80,6 +94,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         } else {
             setView2();
         }
+        //显示缓存大小
+        File cacheFile = ImageLoader.getInstance().getDiskCache().getDirectory();
+        DecimalFormat decimalFormat = new DecimalFormat("#0.00");
+        cacheSize.setText(decimalFormat.format(CommonUtils.getDirSize(cacheFile)) + "M");
     }
 
     private void setBackground(View view) {
@@ -109,7 +127,7 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
     }
 
     @OnClick({R.id.fl_wifiConn, R.id.fl_key, R.id.fl_key_nomal, R.id.fl_key_special,
-            R.id.btn_clear_cache, R.id.btn_about_app})
+            R.id.fl_clear_cache, R.id.btn_about_app})
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -164,15 +182,22 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
                     }
                 }
                 break;
-            case R.id.btn_clear_cache:
+            case R.id.fl_clear_cache:
                 ViewUtils.showToast(getString(R.string.clearCache));
                 new Thread(() -> {//异步清除缓存
                     ImageLoader.getInstance().clearDiskCache();
                     ImageLoader.getInstance().clearMemoryCache();
+                    cacheSize.setText("0M");
                 }).start();
                 break;
             case R.id.btn_about_app:
-
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setMessage(getString(R.string.share_github));
+                builder.setPositiveButton(getString(R.string.copy_url_github), (dialog, which) -> {
+                    ClipboardManager cmb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                    cmb.setText("https://github.com/HzwSunshine/FreeTime");
+                    ViewUtils.showToast(getString(R.string.copyed_url_github));
+                }).show();
                 break;
         }
     }
@@ -219,6 +244,5 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         builder.setNegativeButton(getString(R.string.cancel), null);
         builder.show();
     }
-
 
 }
