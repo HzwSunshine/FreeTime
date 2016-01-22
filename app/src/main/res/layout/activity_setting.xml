@@ -109,16 +109,24 @@
             android:textColor="@color/themeColor_blue"
             android:textSize="12sp"/>
 
-        <Button
-            android:id="@+id/btn_clear_cache"
+
+        <FrameLayout
+            android:id="@+id/fl_clear_cache"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="?android:attr/selectableItemBackground"
-            android:gravity="left|center_vertical"
-            android:paddingLeft="16dp"
-            android:text="清除缓存"
-            android:textColor="#000000"
-            android:textSize="15dp"/>
+            android:layout_height="52dp">
+
+            <TextView
+                style="@style/TextStyle_Setting"
+                android:text="清除缓存"/>
+
+            <TextView
+                android:id="@+id/tv_cache_size"
+                style="@style/TextStyle_Setting"
+                android:textColor="@color/gravy"
+                android:paddingRight="10dp"
+                android:layout_gravity="end|center_vertical"
+                android:textSize="13sp"/>
+        </FrameLayout>
 
         <Button
             android:id="@+id/btn_about_app"
