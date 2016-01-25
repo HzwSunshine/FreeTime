@@ -1,12 +1,16 @@
 package com.hzwsunshine.freetime.Adapter;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -62,7 +66,7 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseRVAdapter.R
             return;
         }
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         params.setMargins(marginLeft, marginTop, marginRight, marginBottom);
         View headerView = LayoutInflater.from(context).inflate(LayoutId, null);
         headerView.setLayoutParams(params);

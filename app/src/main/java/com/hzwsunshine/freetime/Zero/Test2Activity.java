@@ -2,33 +2,13 @@ package com.hzwsunshine.freetime.Zero;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.GeolocationPermissions;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ExpandableListView;
-import android.widget.ImageView;
 
 import com.hzwsunshine.freetime.Activity.BaseActivity;
-import com.hzwsunshine.freetime.Adapter.BaseRVAdapter;
 import com.hzwsunshine.freetime.Adapter.BasedExpandableListAdapter;
-import com.hzwsunshine.freetime.Adapter.ViewHolder;
 import com.hzwsunshine.freetime.R;
-import com.hzwsunshine.freetime.Utils.ImageLoaderUtils;
-import com.hzwsunshine.freetime.Utils.ViewUtils;
-import com.hzwsunshine.freetime.Views.RVGridDivider;
-import com.hzwsunshine.freetime.Views.RVLinearDivider;
-import com.hzwsunshine.freetime.Views.RecyclerViewDivider;
 
 import java.util.ArrayList;
 import java.util.List;
