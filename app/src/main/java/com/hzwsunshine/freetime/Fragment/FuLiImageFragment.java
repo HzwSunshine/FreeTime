@@ -246,6 +246,9 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
             if (mRefreshLayout.isRefreshing()) {
                 mRefreshLayout.setRefreshing(false);
             }
+            if(adapter!=null){
+                adapter.removeFooterView();
+            }
         }
     }
 

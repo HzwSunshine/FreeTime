@@ -2,6 +2,7 @@ package com.hzwsunshine.freetime.Utils;
 
 import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -27,14 +28,17 @@ public class ImageLoaderUtils {
                 .bitmapConfig(Bitmap.Config.RGB_565)
 //                .displayer(new FadeInBitmapDisplayer(300))//图片加载好后的渐入动画
                 .build();
-//        if (Application.connectedType != ConnectivityManager.TYPE_WIFI) {
-//            return;
-//        }
+        if (Application.connectedType == ConnectivityManager.TYPE_MOBILE
+                || ImageLoader.getInstance().getDiskCache() == null
+                || ImageLoader.getInstance().getMemoryCache() == null) {
+            return;
+        }
         ImageLoader.getInstance().displayImage(imgUrl, imgVew, options, new SimpleImageLoadingListener() {
 
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
                         super.onLoadingStarted(imageUri, view);
+                        Log.i("xxx", "开始加载图片");
                     }
 
                     @Override

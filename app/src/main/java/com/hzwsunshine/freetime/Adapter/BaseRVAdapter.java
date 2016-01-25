@@ -53,7 +53,6 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseRVAdapter.R
 
     /**
      * 添加xml布局文件的HeaderView
-     * 添加margin参数的原因为添加的HeaderView的父View为RecyclerView，此时HeaderView根布局中的margin属性失效
      */
     public void addHeaderView(Context context, int LayoutId,
                               int marginLeft, int marginTop, int marginRight, int marginBottom) {
@@ -65,6 +64,12 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseRVAdapter.R
             }
             return;
         }
+        //这里由于LayoutInflater没有ViewGroup而引起HeaderView根布局layout属性失效（失效的原因是：
+        // layout属性用于指定一个View在ViewGroup中的各个属性，如位置大小...，但当前ViewGroup为null
+        // 所以失效）的问题，有多种解决方案
+        //1. 可以在头布局文件的根布局再添加一个ViewGroup
+        //2. 代码指定布局文件的layout属性，如大小和layout_margin,layout_gravity等等
+        //3. 直接指定一个ViewGroup，水平低下，这个还不知道该指定哪个ViewGroup
         RecyclerView.LayoutParams params = new RecyclerView.LayoutParams(
                 RecyclerView.LayoutParams.MATCH_PARENT, RecyclerView.LayoutParams.WRAP_CONTENT);
         params.setMargins(marginLeft, marginTop, marginRight, marginBottom);

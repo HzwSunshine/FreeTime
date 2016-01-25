@@ -5,6 +5,7 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
@@ -72,6 +74,11 @@ public class ShowImageActivity extends BaseActivity {
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)
                 .build();
+        if (Application.connectedType == ConnectivityManager.TYPE_MOBILE
+                || ImageLoader.getInstance().getDiskCache() == null
+                || ImageLoader.getInstance().getMemoryCache() == null) {
+            return;
+        }
         ImageLoader.getInstance().displayImage(imgUrl, showImage, options, new SimpleImageLoadingListener() {
             @Override
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {

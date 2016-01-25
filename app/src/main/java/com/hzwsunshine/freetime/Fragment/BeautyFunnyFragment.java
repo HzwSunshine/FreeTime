@@ -23,6 +23,7 @@ import com.hzwsunshine.freetime.Utils.JsonUtils;
 import com.hzwsunshine.freetime.Utils.NetWorkUtil;
 import com.hzwsunshine.freetime.Utils.ResponseUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -122,6 +123,22 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
                     adapter.addFooterView(getActivity(), R.layout.refresh_progress_bar, 0, 0, 0, 0);
                     isLoading = true;
                     HttpUtils.get(url + page, new GetData(true));
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                switch (newState) {
+                    case 0:
+                        ImageLoader.getInstance().resume();
+                        break;
+                    case 1:
+                        ImageLoader.getInstance().pause();
+                        break;
+                    case 2:
+                        ImageLoader.getInstance().pause();
+                        break;
                 }
             }
         });
@@ -232,7 +249,9 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
             if (mRefreshLayout.isRefreshing()) {
                 mRefreshLayout.setRefreshing(false);
             }
-            adapter.removeFooterView();
+            if(adapter!=null){
+                adapter.removeFooterView();
+            }
         }
     }
 }
