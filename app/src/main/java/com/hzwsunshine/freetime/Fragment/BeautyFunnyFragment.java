@@ -125,22 +125,6 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
                     HttpUtils.get(url + page, new GetData(true));
                 }
             }
-
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-                switch (newState) {
-                    case 0:
-                        ImageLoader.getInstance().resume();
-                        break;
-                    case 1:
-                        ImageLoader.getInstance().pause();
-                        break;
-                    case 2:
-                        ImageLoader.getInstance().pause();
-                        break;
-                }
-            }
         });
     }
 

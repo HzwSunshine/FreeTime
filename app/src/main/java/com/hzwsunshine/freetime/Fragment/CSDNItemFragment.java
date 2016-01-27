@@ -1,6 +1,7 @@
 package com.hzwsunshine.freetime.Fragment;
 
 
+import android.app.ActivityOptions;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,9 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Explode;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ProgressBar;
 
 import com.hzwsunshine.freetime.Activity.CSDNWebViewActivity;
@@ -178,6 +181,11 @@ public class CSDNItemFragment extends BaseFragment implements SwipeRefreshLayout
 
     public void adapterListener(RecycleViewAdapter_CSDN pAdapter) {
         pAdapter.setOnItemClickListener((view, position) -> {
+//            getActivity().getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//            getActivity().getWindow().setExitTransition(new Explode());
+//            getActivity().getWindow().setSharedElementEnterTransition(new Explode());
+//            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(getActivity(),view,"");
+
             Intent intent = new Intent(getActivity(), CSDNWebViewActivity.class);
             intent.putExtra("link", cacheList.get(position).getLink());
             startActivity(intent);

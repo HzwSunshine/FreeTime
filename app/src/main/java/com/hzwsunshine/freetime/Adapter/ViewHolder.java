@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
+ * 通用的ViewHolder
  * Created by 何志伟 on 2016/1/11.
  */
 public class ViewHolder {
@@ -28,7 +29,7 @@ public class ViewHolder {
         view.setTag(viewHolder);
     }
 
-    public <T extends View> T get(int id) {
+    public <T extends View> T getView(int id) {
         View childView = viewHolder.get(id);
         if (childView == null) {
             childView = view.findViewById(id);
@@ -44,15 +45,15 @@ public class ViewHolder {
 
     //封装返回常用的三个控件
     public TextView getTextView(int id) {
-        return get(id);
+        return getView(id);
     }
 
     public Button getButton(int id) {
-        return get(id);
+        return getView(id);
     }
 
     public ImageView getImageView(int id) {
-        return get(id);
+        return getView(id);
     }
 
     //封装设置常用的两个控件

@@ -16,6 +16,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by 何志伟 on 2015/11/15.
+ * 封装通用的Toolbar
  */
 public abstract class BaseActivity extends AppCompatActivity {
 

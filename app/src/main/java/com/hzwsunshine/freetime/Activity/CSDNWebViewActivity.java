@@ -1,7 +1,9 @@
 package com.hzwsunshine.freetime.Activity;
 
 import android.os.Bundle;
+import android.transition.Explode;
 import android.view.KeyEvent;
+import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -12,6 +14,9 @@ public class CSDNWebViewActivity extends BaseActivity {
 
     @Override
     protected void onCreated(Bundle savedInstanceState) {
+//        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+//        getWindow().setExitTransition(new Explode());
+//        getWindow().setSharedElementEnterTransition(new Explode());
         setTitle("CSDN");
         mWebView = new WebView(this);
         setView(mWebView);

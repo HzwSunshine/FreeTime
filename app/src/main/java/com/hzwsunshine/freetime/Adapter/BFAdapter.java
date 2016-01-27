@@ -2,6 +2,7 @@ package com.hzwsunshine.freetime.Adapter;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.hzwsunshine.freetime.Bean.BFImageBean;
 import com.hzwsunshine.freetime.R;
