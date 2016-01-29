@@ -7,6 +7,7 @@ import android.text.style.ForegroundColorSpan;
 import com.hzwsunshine.freetime.Bean.CommentBean;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
+import com.hzwsunshine.freetime.Utils.GlideUtils;
 import com.hzwsunshine.freetime.Utils.ImageLoaderUtils;
 
 import java.util.List;
@@ -28,8 +29,8 @@ public class CommentAdapter extends BaseRVAdapter {
         String time = CommonUtils.timestamp2Date(mList.get(position).getCreated_time());
         holder.setTextView(R.id.tv_comment_time, CommonUtils.timeFormat(time));
         holder.setTextView(R.id.tv_comment_likeNum, mList.get(position).getLikes());
-        ImageLoaderUtils.displayImage(holder.getImageView(R.id.img_comment_userIcon),
-                mList.get(position).getAuthor_avatar(), R.drawable.fuli_image, R.drawable.fuli_image);
+        GlideUtils.showImage(holder.getImageView(R.id.img_comment_userIcon).getContext(),
+                mList.get(position).getAuthor_avatar(), holder.getImageView(R.id.img_comment_userIcon));
         //设置评论
         String text = mList.get(position).getContent();
         SpannableStringBuilder builder = new SpannableStringBuilder(text);

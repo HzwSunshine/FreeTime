@@ -88,8 +88,6 @@ public class ShowImageActivity extends BaseActivity {
 
     private void displayImage(final String imgUrl, ImageView imageView) {
         DisplayImageOptions options = new DisplayImageOptions.Builder()
-                .showImageOnLoading(R.mipmap.defaultimage)
-                .showImageOnFail(R.mipmap.defaultimage)
                 .cacheInMemory(true)
                 .cacheOnDisk(true)
                 .bitmapConfig(Bitmap.Config.RGB_565)

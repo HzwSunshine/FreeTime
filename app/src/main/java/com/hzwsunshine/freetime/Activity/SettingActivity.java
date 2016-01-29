@@ -98,8 +98,10 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
         //显示缓存大小
         File cacheFile = ImageLoader.getInstance().getDiskCache().getDirectory();
         DecimalFormat decimalFormat = new DecimalFormat("#0.00");
-        double cacheSize = CommonUtils.getDirSize(cacheFile) + CommonUtils.getDirSize(Glide.getPhotoCacheDir(this));
+        double cacheSize = CommonUtils.getDirSize(cacheFile) + CommonUtils.getDirSize(Glide.getPhotoCacheDir(this).getParentFile());
         cacheSizeText.setText(decimalFormat.format(cacheSize) + "M");
+
+
     }
 
     private void setBackground(View view) {

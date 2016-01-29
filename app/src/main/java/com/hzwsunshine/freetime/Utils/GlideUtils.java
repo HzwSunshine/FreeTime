@@ -1,6 +1,7 @@
 package com.hzwsunshine.freetime.Utils;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -8,6 +9,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.target.Target;
 import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**
  * Created by 何志伟 on 2015/12/17.
@@ -26,6 +28,11 @@ public class GlideUtils {
 ////                .override(100,100)//指定加载的图片宽高
 ////                .thumbnail(2.8f)//缩略比例
 //                .into(imageView);
+
+        if (Application.connectedType == ConnectivityManager.TYPE_MOBILE
+                || Glide.getPhotoCacheDir(t) == null) {
+            return;
+        }
 
         if (imgUrl.endsWith("gif")) {
             Glide.with(t)
