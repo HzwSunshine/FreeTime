@@ -8,6 +8,7 @@ import com.hzwsunshine.freetime.Activity.FuLiCommentActivity;
 import com.hzwsunshine.freetime.Bean.FuLiImageBean;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
+import com.hzwsunshine.freetime.Utils.GlideUtils;
 import com.hzwsunshine.freetime.Utils.ImageLoaderUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
 
@@ -35,8 +36,9 @@ public class FuLiAdapter extends BaseRVAdapter {
         ViewGroup.LayoutParams layoutParams = holder.getImageView(R.id.img).getLayoutParams();
         layoutParams.height = imageHeight * imageViewWidth / imageWidth;
         holder.getImageView(R.id.img).setLayoutParams(layoutParams);
-        ImageLoaderUtils.displayImage(holder.getImageView(R.id.img), imgUrl,
-                R.drawable.fuli_image, R.drawable.fuli_image);
+//        ImageLoaderUtils.displayImage(holder.getImageView(R.id.img), imgUrl,
+//                R.drawable.fuli_image, R.drawable.fuli_image);
+        GlideUtils.showImage(holder.getImageView(R.id.img).getContext(),imgUrl,holder.getImageView(R.id.img));
         //设置不用的控件属性
         holder.getTextView(R.id.tv_userName).setVisibility(View.GONE);
         holder.getTextView(R.id.tv_commentNum).setVisibility(View.VISIBLE);

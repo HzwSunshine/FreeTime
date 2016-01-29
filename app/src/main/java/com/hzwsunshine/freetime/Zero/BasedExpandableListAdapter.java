@@ -1,4 +1,4 @@
-package com.hzwsunshine.freetime.Adapter;
+package com.hzwsunshine.freetime.Zero;
 
 import android.content.Context;
 import android.content.Intent;

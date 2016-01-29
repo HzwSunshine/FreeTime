@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import com.hzwsunshine.freetime.Activity.BaseActivity;
-import com.hzwsunshine.freetime.Adapter.BasedExpandableListAdapter;
 import com.hzwsunshine.freetime.R;
 
 import java.util.ArrayList;

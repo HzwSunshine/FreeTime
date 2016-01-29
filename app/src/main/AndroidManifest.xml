@@ -43,7 +43,7 @@
         </activity>
 
         <meta-data
-            android:name="com.hzwsunshine.freetime.Application.AppGlideMoudle"
+            android:name="com.hzwsunshine.freetime.Application.AppGlideModule"
             android:value="GlideModule"/>
 
         <activity
@@ -63,6 +63,14 @@
         </activity>
         <activity android:name=".Zero.TestActivity">
         </activity>
+
+        <service
+            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
+            android:enabled="false"
+            android:process=":leakcanary" />
+        <service
+            android:name="com.squareup.leakcanary.DisplayLeakService"
+            android:enabled="false" />
 
     </application>
 

@@ -1,6 +1,5 @@
 package com.hzwsunshine.freetime.Activity;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -10,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
+import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
 
@@ -20,13 +21,11 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    protected Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-        context = this;//初始化上下文
         initToolbar();
         //用于子类初始化View
         onCreated(savedInstanceState);
@@ -48,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 新建一个视图，并设置
+     *
      * @param childView 子视图
      */
     protected void setView(View childView) {
@@ -62,7 +62,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     private void initToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
-        Drawable drawable=getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        Drawable drawable = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
         toolbar.setNavigationIcon(drawable);
         setSupportActionBar(toolbar);
         toolbar.setNavigationOnClickListener(v -> finish());

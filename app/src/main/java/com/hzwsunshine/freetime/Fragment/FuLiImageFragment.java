@@ -159,6 +159,9 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
 
     public void adapterListener(FuLiAdapter pAdapter) {
         pAdapter.setOnItemClickListener((view, position) -> {
+            if(cacheList.get(position).getWpic_large().endsWith("gif")){
+                return;//福利图的gif图不允许点击
+            }
             Intent intent = new Intent(getActivity(), ShowImageActivity.class);
             Bundle bundle = new Bundle();
             bundle.putString("imgUrl", cacheList.get(position).getWpic_large());

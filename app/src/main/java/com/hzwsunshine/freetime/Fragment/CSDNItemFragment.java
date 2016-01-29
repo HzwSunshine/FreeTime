@@ -1,7 +1,5 @@
 package com.hzwsunshine.freetime.Fragment;
 
-
-import android.app.ActivityOptions;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -9,9 +7,7 @@ import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.transition.Explode;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.ProgressBar;
 
 import com.hzwsunshine.freetime.Activity.CSDNWebViewActivity;

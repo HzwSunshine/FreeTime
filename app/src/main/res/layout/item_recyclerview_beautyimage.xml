@@ -51,20 +51,34 @@
             android:textColor="#000000"
             android:textSize="14dp"/>
 
-        <ImageView
-            android:id="@+id/img"
+        <FrameLayout
+            android:id="@+id/fl_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_contentText"
-            android:layout_marginTop="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/fuli_image"/>
+            android:layout_below="@id/tv_contentText">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/fuli_image"/>
+
+            <ImageView
+                android:id="@+id/img_gif"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:src="@mipmap/gif_placeholder"/>
+        </FrameLayout>
 
         <TextView
             android:id="@+id/tv_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img"
+            android:layout_below="@id/fl_image"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:drawableLeft="@mipmap/like"
@@ -89,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="23dp"
             android:layout_alignParentEnd="true"
-            android:layout_below="@id/img"
+            android:layout_below="@id/fl_image"
             android:drawablePadding="8dp"
             android:drawableStart="@mipmap/icon_comment"
             android:gravity="center_vertical"

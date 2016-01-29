@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.Fragment.BeautyFunnyFragment;
 import com.hzwsunshine.freetime.Fragment.CSDNFragment;
 import com.hzwsunshine.freetime.Fragment.FuLiImageFragment;
@@ -27,6 +28,7 @@ import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.SharedUtils;
 import com.hzwsunshine.freetime.Zero.Test2Activity;
 import com.hzwsunshine.freetime.Zero.TestActivity;
+import com.squareup.leakcanary.RefWatcher;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {

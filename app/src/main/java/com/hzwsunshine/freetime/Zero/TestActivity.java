@@ -18,9 +18,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hzwsunshine.freetime.Activity.BaseActivity;
+import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.AnimUtils;
 import com.hzwsunshine.freetime.Utils.ImageLoaderUtils;
+import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -49,15 +51,18 @@ public class TestActivity extends BaseActivity {
     protected void onCreated(Bundle savedInstanceState) {
         setView(R.layout.activity_test);
         setTitle(getString(R.string.menu_test));
+        //内存泄露检测
+        RefWatcher refWatcher = Application.getRefWatcher(this);
+        refWatcher.watch(this);
         initView();
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.inject(this);
-    }
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        // TODO: add setContentView(...) invocation
+//        ButterKnife.inject(this);
+//    }
 
     private void initView() {
         img1.setOnClickListener(v -> {
@@ -179,4 +184,9 @@ public class TestActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
 }

@@ -14,6 +14,9 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by He Zhiwei on 2015/8/24.
  */
@@ -38,7 +41,6 @@ public class ImageLoaderUtils {
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
                         super.onLoadingStarted(imageUri, view);
-                        Log.i("xxx", "开始加载图片");
                     }
 
                     @Override
@@ -49,6 +51,10 @@ public class ImageLoaderUtils {
                     @Override
                     public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
                         super.onLoadingComplete(imageUri, view, loadedImage);
+                        Map<String, Integer> wh = new HashMap<>();
+                        wh.put("width", loadedImage.getWidth());
+                        wh.put("height", loadedImage.getHeight());
+                        Application.imageWH.put(imgUrl, wh);
                     }
 
                     @Override

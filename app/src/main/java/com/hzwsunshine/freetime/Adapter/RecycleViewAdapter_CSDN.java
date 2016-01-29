@@ -37,9 +37,11 @@ public class RecycleViewAdapter_CSDN extends RecyclerView.Adapter<RecycleViewAda
     public void onBindViewHolder(final ViewHolder holder, int position) {
         String imgUrl = mList.get(position).getImgLink();
         if (imgUrl == null) {
-            imgUrl = "www.023085023580358023.jpg";
+            holder.imgTitle.setVisibility(View.GONE);
+        } else {
+            holder.imgTitle.setVisibility(View.VISIBLE);
+            ImageLoaderUtils.displayImage(holder.imgTitle, imgUrl, R.mipmap.defaultimage, R.mipmap.defaultimage);
         }
-        ImageLoaderUtils.displayImage(holder.imgTitle, imgUrl, R.mipmap.defaultimage, R.mipmap.defaultimage);
         //设置时间
         holder.time.setText(mList.get(position).getDate());
         //标题

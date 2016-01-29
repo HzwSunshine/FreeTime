@@ -8,6 +8,9 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="AppTheme" parent="BaseAppTheme">
+    </style>
+
     <style name="tabIndicator">
         <item name="android:gravity">center</item>
         <item name="android:layout_width">wrap_content</item>

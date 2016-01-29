@@ -8,6 +8,9 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.hzwsunshine.freetime.Application.Application;
+import com.squareup.leakcanary.RefWatcher;
+
 public class CSDNWebViewActivity extends BaseActivity {
 
     private WebView mWebView;
@@ -17,6 +20,9 @@ public class CSDNWebViewActivity extends BaseActivity {
 //        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
 //        getWindow().setExitTransition(new Explode());
 //        getWindow().setSharedElementEnterTransition(new Explode());
+        //内存泄露检测
+        RefWatcher refWatcher = Application.getRefWatcher(this);
+        refWatcher.watch(this);
         setTitle("CSDN");
         mWebView = new WebView(this);
         setView(mWebView);
