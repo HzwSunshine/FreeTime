@@ -1,5 +1,7 @@
 package com.hzwsunshine.freetime.Activity;
 
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -25,6 +27,7 @@ import com.hzwsunshine.freetime.Application.Interface;
 import com.hzwsunshine.freetime.Bean.CommentBean;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
+import com.hzwsunshine.freetime.Utils.GlideUtils;
 import com.hzwsunshine.freetime.Utils.HttpUtils;
 import com.hzwsunshine.freetime.Utils.ImageLoaderUtils;
 import com.hzwsunshine.freetime.Utils.JsonUtils;
@@ -108,7 +111,7 @@ public class FuLiCommentActivity extends BaseActivity {
                     mAdapter = new CommentAdapter(cacheList, R.layout.item_comments_fuli);
                     itemRecyclerView.setAdapter(mAdapter);
                     mAdapter.addHeaderView(createHotComment());
-                    mAdapter.setOnItemClickListener((view, position) -> createPopupWindow(view));
+                    mAdapter.setOnItemClickListener((view, position) -> createPopupWindow(view, cacheList.get(position).getContent()));
                 } else {
                     mAdapter.notifyDataSetChanged();
                 }
@@ -146,7 +149,8 @@ public class FuLiCommentActivity extends BaseActivity {
 
         for (int i = 0; i < mHotList.size(); i++) {
             View view = LayoutInflater.from(this).inflate(R.layout.item_comments_fuli, hotContent, false);
-            view.setOnClickListener(v -> createPopupWindow(view));
+            final int finalI = i;
+            view.setOnClickListener(v -> createPopupWindow(view, mHotList.get(finalI).getContent()));
             CircleImageView userIcon = (CircleImageView) view.findViewById(R.id.img_comment_userIcon);
             TextView userName = (TextView) view.findViewById(R.id.tv_comment_userName);
             TextView time = (TextView) view.findViewById(R.id.tv_comment_time);
@@ -157,8 +161,7 @@ public class FuLiCommentActivity extends BaseActivity {
                 line.setVisibility(View.GONE);
             }
             //适配热门评论
-            ImageLoaderUtils.displayImage(userIcon, mHotList.get(i).getAuthor_avatar(),
-                    R.mipmap.ic_face_black_36dp, R.mipmap.ic_face_black_36dp);
+            GlideUtils.showImage(this, mHotList.get(i).getAuthor_avatar(), userIcon);
             userName.setText(mHotList.get(i).getAuthor_name());
             String timeStr = CommonUtils.timestamp2Date(mHotList.get(i).getCreated_time());
             time.setText(CommonUtils.timeFormat(timeStr));
@@ -169,7 +172,7 @@ public class FuLiCommentActivity extends BaseActivity {
             int end = text.indexOf(":");
             if (start != -1 && end != -1) {
                 builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.themeColor_blue)),
-                        start-3, end, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
+                        start - 3, end, Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                 builder.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.gravy)),
                         end + 1, text.length(), Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
                 content.setText(builder);
@@ -192,13 +195,18 @@ public class FuLiCommentActivity extends BaseActivity {
         return hotContent;
     }
 
-    private void createPopupWindow(View parent) {
+    private void createPopupWindow(View parent, String content) {
         View popView = LayoutInflater.from(this).inflate(R.layout.popup_window, null, false);
         PopupWindow popupWindow = new PopupWindow(popView, ViewUtils.dip2px(this, 120),
                 LinearLayoutCompat.LayoutParams.WRAP_CONTENT, true);
         popupWindow.setBackgroundDrawable(new ColorDrawable(0));
         Button reply = (Button) popView.findViewById(R.id.btn_reply);
-        reply.setOnClickListener(v -> popupWindow.dismiss());
+        reply.setOnClickListener(v -> {
+            ClipboardManager cmb = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+            cmb.setText(content);
+            ViewUtils.showToast(getString(R.string.copyed_comment));
+            popupWindow.dismiss();
+        });
         popupWindow.showAsDropDown(parent, ViewUtils.dip2px(this, 50),
                 -parent.getHeight() + ViewUtils.dip2px(this, 40), Gravity.CENTER);
     }

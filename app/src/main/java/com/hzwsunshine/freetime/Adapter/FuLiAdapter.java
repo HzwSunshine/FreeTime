@@ -36,8 +36,6 @@ public class FuLiAdapter extends BaseRVAdapter {
         ViewGroup.LayoutParams layoutParams = holder.getImageView(R.id.img).getLayoutParams();
         layoutParams.height = imageHeight * imageViewWidth / imageWidth;
         holder.getImageView(R.id.img).setLayoutParams(layoutParams);
-//        ImageLoaderUtils.displayImage(holder.getImageView(R.id.img), imgUrl,
-//                R.drawable.fuli_image, R.drawable.fuli_image);
         GlideUtils.showImage(holder.getImageView(R.id.img).getContext(),imgUrl,holder.getImageView(R.id.img));
         //设置不用的控件属性
         holder.getTextView(R.id.tv_userName).setVisibility(View.GONE);

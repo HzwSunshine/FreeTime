@@ -6,10 +6,10 @@
             android:id="@+id/nav_funny_image"
             android:icon="@mipmap/ic_color_lens_black_36dp"
             android:title="@string/funnyImage"/>
-        <item
-            android:id="@+id/nav_beauty_image"
-            android:icon="@mipmap/ic_face_black_36dp"
-            android:title="@string/beautyImage"/>
+        <!--<item-->
+            <!--android:id="@+id/nav_beauty_image"-->
+            <!--android:icon="@mipmap/ic_face_black_36dp"-->
+            <!--android:title="@string/beautyImage"/>-->
         <item
             android:id="@+id/nav_fuli_image"
             android:icon="@mipmap/ic_insert_emoticon_black_36dp"
@@ -30,21 +30,6 @@
                 android:id="@+id/nav_exit"
                 android:icon="@mipmap/ic_highlight_off_black_36dp"
                 android:title="@string/menu_exit"/>
-        </menu>
-    </item>
-
-    <item android:title="@string/menu_56">
-        <menu>
-            <item
-                android:id="@+id/nav_test"
-                android:icon="@mipmap/ic_info_outline_black_36dp"
-                android:title="@string/menu_test"/>
-            <item
-                android:id="@+id/nav_test1"
-                android:icon="@mipmap/ic_lightbulb_outline_black_36dp"
-                android:title="@string/menu_test1"/>
-            <item
-                android:title=""/>
         </menu>
     </item>
 

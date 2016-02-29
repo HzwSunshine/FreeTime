@@ -4,12 +4,9 @@ import android.animation.ObjectAnimator;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -20,7 +17,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
-import com.hzwsunshine.freetime.Utils.GlideUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -56,7 +52,7 @@ public class ShowImageActivity extends BaseActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setView(R.layout.activity_show_image);
         getSupportActionBar().hide();
-        setTransTheme();
+        ViewUtils.transparentTheme(this);
         initView();
         setShowImage();
     }
@@ -104,20 +100,6 @@ public class ShowImageActivity extends BaseActivity {
                 mBitmap = loadedImage;
             }
         });
-    }
-
-    private void setTransTheme() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-//            window.setNavigationBarColor(Color.TRANSPARENT);
-        }
     }
 
     private void initView() {

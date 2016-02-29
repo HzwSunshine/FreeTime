@@ -1,15 +1,10 @@
 package com.hzwsunshine.freetime.Activity;
 
 import android.os.Bundle;
-import android.transition.Explode;
 import android.view.KeyEvent;
-import android.view.Window;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-
-import com.hzwsunshine.freetime.Application.Application;
-import com.squareup.leakcanary.RefWatcher;
 
 public class CSDNWebViewActivity extends BaseActivity {
 
@@ -17,12 +12,6 @@ public class CSDNWebViewActivity extends BaseActivity {
 
     @Override
     protected void onCreated(Bundle savedInstanceState) {
-//        getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-//        getWindow().setExitTransition(new Explode());
-//        getWindow().setSharedElementEnterTransition(new Explode());
-        //内存泄露检测
-        RefWatcher refWatcher = Application.getRefWatcher(this);
-        refWatcher.watch(this);
         setTitle("CSDN");
         mWebView = new WebView(this);
         setView(mWebView);
@@ -55,6 +44,5 @@ public class CSDNWebViewActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
 
 }

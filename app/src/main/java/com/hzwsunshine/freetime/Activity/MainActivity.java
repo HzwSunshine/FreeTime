@@ -2,7 +2,6 @@ package com.hzwsunshine.freetime.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -16,19 +15,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
-import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.Fragment.BeautyFunnyFragment;
 import com.hzwsunshine.freetime.Fragment.CSDNFragment;
 import com.hzwsunshine.freetime.Fragment.FuLiImageFragment;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.SharedUtils;
-import com.hzwsunshine.freetime.Zero.Test2Activity;
-import com.hzwsunshine.freetime.Zero.TestActivity;
-import com.squareup.leakcanary.RefWatcher;
+import com.hzwsunshine.freetime.Utils.ViewUtils;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
@@ -48,8 +41,7 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //透明的主题
-        transparentTheme();
+        ViewUtils.transparentTheme(this);//透明的主题
         initFragment();
         initView();
     }
@@ -63,15 +55,14 @@ public class MainActivity extends AppCompatActivity implements
             Bundle bundle = new Bundle();
             if (i == 0) {
                 bundle.putString("tag", "FunnyImage");
-            }
-            if (i == 1) {
+            } else if (i == 1) {
                 bundle.putString("tag", "BeautyImage");
             }
             fragmentArray[i].setArguments(bundle);
             mTransaction.add(R.id.show_fragment, fragmentArray[i]);
             mTransaction.hide(fragmentArray[i]);
         }
-        //显示上次退出时显示的Fragment，这里之所以有if-else的判断是为了程序的健壮性
+        //显示上次退出时显示的Fragment，三目运算符是为了程序的健壮性
         Object tag = SharedUtils.get(this, "CurrentFragment", Integer.class);
         fragmentTag = tag == null ? 0 : (int) tag;
         mTransaction.show(fragmentArray[fragmentTag]);
@@ -106,10 +97,10 @@ public class MainActivity extends AppCompatActivity implements
                 tag = 0;
                 hideAndShowFragment(tag);
                 break;
-            case R.id.nav_beauty_image:
-                tag = 1;
-                hideAndShowFragment(tag);
-                break;
+//            case R.id.nav_beauty_image:
+//                tag = 1;
+//                hideAndShowFragment(tag);
+//                break;
             case R.id.nav_fuli_image:
                 tag = 2;
                 hideAndShowFragment(tag);
@@ -120,21 +111,9 @@ public class MainActivity extends AppCompatActivity implements
                 break;
             case R.id.nav_setting:
                 new Handler().postDelayed(() -> {
-                    Intent intent = new Intent(getApplication(), SettingActivity.class);
+                    Intent intent = new Intent(MainActivity.this, SettingActivity.class);
                     startActivity(intent);
-                }, 180);
-                break;
-            case R.id.nav_test:
-                new Handler().postDelayed(() -> {
-                    Intent intent = new Intent(getApplication(), TestActivity.class);
-                    startActivity(intent);
-                }, 180);
-                break;
-            case R.id.nav_test1:
-                new Handler().postDelayed(() -> {
-                    Intent intent = new Intent(getApplication(), Test2Activity.class);
-                    startActivity(intent);
-                }, 180);
+                }, 200);
                 break;
             case R.id.nav_exit:
                 exitAppDialog();
@@ -163,20 +142,8 @@ public class MainActivity extends AppCompatActivity implements
         } else if ((System.currentTimeMillis() - exitTime) > 2000) {
             exitTime = System.currentTimeMillis();
         } else {
-            moveTaskToBack(false);
-        }
-    }
-
-    private void transparentTheme() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
+//            moveTaskToBack(false);//退到后台但不销毁
+            exitAppDialog();
         }
     }
 
@@ -184,17 +151,12 @@ public class MainActivity extends AppCompatActivity implements
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
         dialog.setTitle(getString(R.string.exitTitle));
         dialog.setPositiveButton(getString(R.string.confirm), (dialog1, which) -> {
-            exitApp();
+            System.gc();
+            this.finish();
         });
         dialog.setNegativeButton(getString(R.string.cancel), (dialog1, which) -> {
         });
         dialog.show();
-    }
-
-    private void exitApp() {
-        finish();
-        System.gc();
-        System.exit(0);
     }
 
 }
@@ -215,20 +177,3 @@ public class MainActivity extends AppCompatActivity implements
 
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
 //                        .setAction("Action", null).show();
-
-
-//if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//        Animator animator = ViewAnimationUtils.createCircularReveal(progressView,
-//        progressView.getWidth() / 2, progressView.getHeight() / 2, progressView.getWidth(), 0);
-//        animator.setInterpolator(new AccelerateDecelerateInterpolator());
-//        animator.setDuration(1000);
-//        animator.start();
-//        }
-
-//if ((System.currentTimeMillis() - exitTime) > 2000) {
-//        ViewUtils.showToast(getString(R.string.exit_press_again));
-//        exitTime = System.currentTimeMillis();
-//        } else {
-////            exitApp();
-//        moveTaskToBack(false);
-//        }

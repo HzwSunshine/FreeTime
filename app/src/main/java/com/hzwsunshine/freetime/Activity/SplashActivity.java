@@ -5,13 +5,8 @@ import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -37,19 +32,19 @@ public class SplashActivity extends BaseActivity {
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setView(R.layout.activity_splash);
         getSupportActionBar().hide();
-        transparentTheme();
+        ViewUtils.transparentTheme(this);
         setBackground();
         setAnimation();
-        new Handler().postDelayed(() -> initView(), 1700);
+        new Handler().postDelayed(() -> initView(), 2100);
     }
 
     private void initView() {
         String key = (String) SharedUtils.get(this, "key", String.class);
         if (key != null && key.equals("key_on")) {//开启密码保护时进入输入界面
-            Intent intent = new Intent(this, PassWordActivity.class);
+            Intent intent = new Intent(SplashActivity.this, PassWordActivity.class);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
             startActivity(intent);
         }
         finish();
@@ -64,10 +59,10 @@ public class SplashActivity extends BaseActivity {
             colorAnim.setEvaluator(new ArgbEvaluator());
             colorAnim.start();
 
-            AnimatorSet animatorSet=new AnimatorSet();
+            AnimatorSet animatorSet = new AnimatorSet();
             animatorSet.playTogether(
-                    ObjectAnimator.ofFloat(beginTitle, "translationY", 0, -ViewUtils.dip2px(this,400)),
-                    ObjectAnimator.ofFloat(beginTitle, "translationX", 0, -ViewUtils.dip2px(this,50)),
+                    ObjectAnimator.ofFloat(beginTitle, "translationY", 0, -ViewUtils.dip2px(this, 400)),
+                    ObjectAnimator.ofFloat(beginTitle, "translationX", 0, -ViewUtils.dip2px(this, 50)),
                     ObjectAnimator.ofFloat(beginTitle, "scaleX", 1.0f, 0.7f),
                     ObjectAnimator.ofFloat(beginTitle, "scaleY", 1.0f, 0.7f)
             );
@@ -97,20 +92,6 @@ public class SplashActivity extends BaseActivity {
 
     private void setBkg(int imgId) {
         splashView.setBackground(getResources().getDrawable(imgId));
-    }
-
-    private void transparentTheme() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
-                    | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.TRANSPARENT);
-//            window.setNavigationBarColor(Color.TRANSPARENT);
-        }
     }
 
 }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">你妹的</string>
+    <string name="app_name">工作之余</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="NoMoreNewData">木有更多数据啦</string>
@@ -46,6 +46,7 @@
     <string name="share_github">该项目已分享至GitHub上</string>
     <string name="copy_url_github">复制链接</string>
     <string name="copyed_url_github">已复制链接</string>
+    <string name="copyed_comment">已复制</string>
 
     <string name="copyImgUrl">图片链接已复制到剪切板</string>
     <string name="copyCsdnUrl">该条链接已复制到剪切板</string>

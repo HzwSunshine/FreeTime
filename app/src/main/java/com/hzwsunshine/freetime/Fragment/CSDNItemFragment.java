@@ -1,5 +1,6 @@
 package com.hzwsunshine.freetime.Fragment;
 
+import android.app.ActivityOptions;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import com.hzwsunshine.freetime.Utils.AnimUtils;
 import com.hzwsunshine.freetime.Utils.DBUtils;
 import com.hzwsunshine.freetime.Utils.HtmlUtils;
 import com.hzwsunshine.freetime.Utils.HttpUtils;
+import com.hzwsunshine.freetime.Utils.NetWorkUtil;
 import com.hzwsunshine.freetime.Utils.ResponseUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
 
@@ -168,7 +170,7 @@ public class CSDNItemFragment extends BaseFragment implements SwipeRefreshLayout
         public void failure() {
             super.failure();
             isLoading = false;
-            if (refreshLayout.isRefreshing()) {
+            if (refreshLayout != null && refreshLayout.isRefreshing()) {
                 refreshLayout.setRefreshing(false);
             }
             AnimUtils.toSmall(progressView);
@@ -177,14 +179,11 @@ public class CSDNItemFragment extends BaseFragment implements SwipeRefreshLayout
 
     public void adapterListener(RecycleViewAdapter_CSDN pAdapter) {
         pAdapter.setOnItemClickListener((view, position) -> {
-//            getActivity().getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-//            getActivity().getWindow().setExitTransition(new Explode());
-//            getActivity().getWindow().setSharedElementEnterTransition(new Explode());
-//            ActivityOptions options=ActivityOptions.makeSceneTransitionAnimation(getActivity(),view,"");
-
-            Intent intent = new Intent(getActivity(), CSDNWebViewActivity.class);
-            intent.putExtra("link", cacheList.get(position).getLink());
-            startActivity(intent);
+            if(NetWorkUtil.isNetworkSuccess(getActivity())){
+                Intent intent = new Intent(getActivity(), CSDNWebViewActivity.class);
+                intent.putExtra("link", cacheList.get(position).getLink());
+                getActivity().startActivity(intent);
+            }
         });
         pAdapter.setOnItemLongClickListener((view, position) -> {
             ClipboardManager cmb = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);

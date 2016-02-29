@@ -40,7 +40,7 @@ public class CircleImageView extends ImageView {
         mPaintFlagsDrawFilter = new PaintFlagsDrawFilter(0,
                 Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG);
         paint = new Paint();
-        paint.setAntiAlias(true);
+        paint.setAntiAlias(false);
         paint.setFilterBitmap(true);
         paint.setColor(Color.WHITE);
 

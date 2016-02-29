@@ -21,7 +21,7 @@ public class HttpUtils {
      */
     public static void get(String url, ResponseUtils response) {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, response, response);
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(15*1000,1,1.0f));//15秒超时
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(15 * 1000, 1, 1.0f));//15秒超时
         VolleySingleton.getVolleySingleton(Application.getContent()).addToRequestQueue(stringRequest);
     }
 
@@ -35,7 +35,8 @@ public class HttpUtils {
                 return paramsMap;
             }
         };
-        stringRequest.setRetryPolicy(new DefaultRetryPolicy(15*1000,1,1.0f));//15秒超时
+        stringRequest.setRetryPolicy(new DefaultRetryPolicy(15 * 1000, 1, 1.0f));//15秒超时
         VolleySingleton.getVolleySingleton(Application.getContent()).addToRequestQueue(stringRequest);
     }
+
 }

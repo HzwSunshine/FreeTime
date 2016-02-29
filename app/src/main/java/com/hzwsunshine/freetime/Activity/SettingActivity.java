@@ -17,7 +17,6 @@ import com.bumptech.glide.Glide;
 import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
 import com.hzwsunshine.freetime.Utils.CommonUtils;
-import com.hzwsunshine.freetime.Utils.GlideUtils;
 import com.hzwsunshine.freetime.Utils.SharedUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -189,11 +188,11 @@ public class SettingActivity extends BaseActivity implements View.OnClickListene
             case R.id.fl_clear_cache:
                 ViewUtils.showToast(getString(R.string.clearCache));
                 cacheSizeText.setText("0M");
-                Glide.get(this.getApplication()).clearMemory();//这个必须在主线程中运行
+                Glide.get(getApplication()).clearMemory();//这个必须在主线程中运行
                 new Thread(() -> {//异步清除缓存
                     ImageLoader.getInstance().clearMemoryCache();
                     ImageLoader.getInstance().clearDiskCache();
-                    Glide.get(this.getApplication()).clearDiskCache();
+                    Glide.get(getApplication()).clearDiskCache();
                 }).start();
                 break;
             case R.id.btn_about_app:

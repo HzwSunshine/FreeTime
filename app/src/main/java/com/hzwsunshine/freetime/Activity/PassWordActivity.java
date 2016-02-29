@@ -63,9 +63,9 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
             Window window = getWindow();
             window.setStatusBarColor(Color.parseColor("#E1DDDF"));
         }
-        mKey = (String) SharedUtils.get(getApplication(), "key", String.class);
-        mPassWord = (String) SharedUtils.get(getApplication(), "password", String.class);
-        mKeyNormal = (String) SharedUtils.get(getApplication(), "key_normal", String.class);
+        mKey = (String) SharedUtils.get(this, "key", String.class);
+        mPassWord = (String) SharedUtils.get(this, "password", String.class);
+        mKeyNormal = (String) SharedUtils.get(this, "key_normal", String.class);
     }
 
     private void initData() {
@@ -84,7 +84,7 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
             //密码已开关打开，并且正常方式关闭（即特殊方式打开），才会执行此方法
             tag++;
             if (tag == 3) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 tag = 0;
@@ -129,8 +129,9 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
                     if (mKey.equals("key_on")&&mKeyNormal.equals("key_on")) {
                         //密码保护打开，并且正常方式打开，才会执行此方法
                         if (password.getText().toString().equals(mPassWord)) {
-                            Intent intent = new Intent(getApplication(), MainActivity.class);
+                            Intent intent = new Intent(PassWordActivity.this, MainActivity.class);
                             startActivity(intent);
+                            finish();
                         } else {
                             initTextView();
                         }
@@ -147,10 +148,10 @@ public class PassWordActivity extends BaseActivity implements View.OnClickListen
             text2.setText("");
             text3.setText("");
             text4.setText("");
-            Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+            Animation animation = AnimationUtils.loadAnimation(getApplication(), R.anim.shake);
             passwordGroup.startAnimation(animation);
             //手机震动300毫秒
-            CommonUtils.Vibrate(getApplicationContext(), 300);
+            CommonUtils.Vibrate(getApplication(), 300);
         }
     }
 

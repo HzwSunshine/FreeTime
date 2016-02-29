@@ -7,8 +7,6 @@ import android.util.Log;
 import com.hzwsunshine.freetime.Utils.DBUtils;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -32,7 +30,6 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         appContent = this;
-        refWatcher = LeakCanary.install(this);
         //初始化图片加载工具，初始化为默认的配置
         ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
         try {
@@ -58,15 +55,6 @@ public class Application extends android.app.Application {
         super.onTerminate();
     }
 
-
-    public static RefWatcher getRefWatcher(Context context) {
-        Application application = (Application) context
-                .getApplicationContext();
-        return application.refWatcher;
-    }
-
-    //在自己的Application中添加如下代码
-    private RefWatcher refWatcher;
 
 
 }

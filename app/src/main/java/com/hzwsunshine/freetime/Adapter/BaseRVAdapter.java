@@ -294,5 +294,5 @@ public abstract class BaseRVAdapter extends RecyclerView.Adapter<BaseRVAdapter.R
 }
 
 //该适配器还存在的问题：
-//  1.Item只能添加xml布局文件，不能添加代码创建的View
+//  1.Item只能添加xml布局，不能添加代码创建的View
 //  2.其他问题暂未发现

@@ -3,15 +3,14 @@ package com.hzwsunshine.freetime.Activity;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import com.hzwsunshine.freetime.Application.Application;
 import com.hzwsunshine.freetime.R;
-import com.squareup.leakcanary.RefWatcher;
 
 import butterknife.ButterKnife;
 
@@ -21,6 +20,8 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
+
+    private Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,12 +61,16 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 初始化Toolbar
      */
     private void initToolbar() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setTitleTextColor(Color.WHITE);
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolbar.setTitleTextColor(Color.WHITE);
         Drawable drawable = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
-        toolbar.setNavigationIcon(drawable);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationOnClickListener(v -> finish());
+        mToolbar.setNavigationIcon(drawable);
+        setSupportActionBar(mToolbar);
+        mToolbar.setNavigationOnClickListener(v -> finish());
+    }
+
+    public View getToolbar() {
+        return mToolbar == null ? null : mToolbar;
     }
 
 }

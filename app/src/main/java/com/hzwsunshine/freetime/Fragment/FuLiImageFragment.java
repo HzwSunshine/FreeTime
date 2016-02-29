@@ -28,6 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,7 +92,7 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
             adapterListener(adapter);
             page++;
         } else {//第一次进入
-            mRefreshLayout.setProgressViewOffset(false, 0, ViewUtils.dip2px(getActivity(),30));
+            mRefreshLayout.setProgressViewOffset(false, 0, ViewUtils.dip2px(getActivity(), 30));
             mRefreshLayout.setRefreshing(true);
             String url = Interface.fuliImageUrl + "&page=0&page_size=30&max_timestamp=-1&latest_viewed_ts=0";
             HttpUtils.get(url, new GetData(false));
@@ -130,20 +131,13 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
         if (Application.connectedType == ConnectivityManager.TYPE_WIFI) {
-            String url;
-            if (cacheList.size() == 0) {
-                //如果不判断，那么在第一次进入断网未加载出数据，再次刷新时会奔溃
-                url = Interface.fuliImageUrl + "&page=0&page_size=30&max_timestamp=-1&latest_viewed_ts=0";
-            } else {
-                url = Interface.fuliImageUrl
-                        + "&page=0&page_size=30&max_timestamp=-1&latest_viewed_ts="
-                        + cacheList.get(0).getUpdate_time();
-            }
+            String url = Interface.fuliImageUrl + "&page=0&page_size=30&max_timestamp=-1&latest_viewed_ts=";
+            url = cacheList.size() == 0 ? url + "0" : url + cacheList.get(0).getUpdate_time();
             HttpUtils.get(url, new GetData(false));
         } else if (Application.connectedType == ConnectivityManager.TYPE_MOBILE) {
             ViewUtils.showToast(getString(R.string.not_allow_refresh));
             mRefreshLayout.setRefreshing(false);
-        }else{
+        } else {
             ViewUtils.showToast(getString(R.string.not_connect_netWork));
             mRefreshLayout.setRefreshing(false);
         }
@@ -159,7 +153,7 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
 
     public void adapterListener(FuLiAdapter pAdapter) {
         pAdapter.setOnItemClickListener((view, position) -> {
-            if(cacheList.get(position).getWpic_large().endsWith("gif")){
+            if (cacheList.get(position).getWpic_large().endsWith("gif")) {
                 return;//福利图的gif图不允许点击
             }
             Intent intent = new Intent(getActivity(), ShowImageActivity.class);
@@ -249,7 +243,7 @@ public class FuLiImageFragment extends BaseFragment implements SwipeRefreshLayou
             if (mRefreshLayout.isRefreshing()) {
                 mRefreshLayout.setRefreshing(false);
             }
-            if(adapter!=null){
+            if (adapter != null) {
                 adapter.removeFooterView();
             }
         }

@@ -5,10 +5,8 @@
     </style>
 
     <style name="SplashActivityTheme" parent="BaseAppTheme">
-        <item name="android:windowIsTranslucent">true</item>
-    </style>
-
-    <style name="AppTheme" parent="BaseAppTheme">
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowBackground">@drawable/splash_activity_bg</item>
     </style>
 
     <style name="tabIndicator">

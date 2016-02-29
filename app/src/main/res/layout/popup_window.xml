@@ -9,7 +9,7 @@
     <Button
         android:id="@+id/btn_reply"
         style="@style/popupWindowButtonStyle"
-        android:text="回复"/>
+        android:text="复制"/>
 
     <Button
         android:id="@+id/btn_other1"

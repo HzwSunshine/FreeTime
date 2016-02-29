@@ -30,7 +30,7 @@ public class BFAdapter extends BaseRVAdapter {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         String imgUrl = mList.get(position).getPics().get(0);
-        if (Application.imageWH.get(imgUrl) != null) {
+        if (Application.imageWH.get(imgUrl) != null) {//能得到图片的宽高，说明图片下载成功
             int imageViewWidth = ViewUtils.getScreenWidth(holder.getImageView(R.id.img).getContext())
                     - ViewUtils.dip2px(holder.getImageView(R.id.img).getContext(), 44);
             int imageWidth = Application.imageWH.get(imgUrl).get("width");

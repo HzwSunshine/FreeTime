@@ -48,7 +48,7 @@ public class CSDNFragment extends BaseFragment {
                     .create());
             viewPager.setAdapter(adapter);
             tabLayout.setViewPager(viewPager);
-        }, 180);
+        }, 220);
 
     }
 

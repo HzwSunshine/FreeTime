@@ -1,8 +1,10 @@
 package com.hzwsunshine.freetime.Fragment;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -23,7 +25,6 @@ import com.hzwsunshine.freetime.Utils.JsonUtils;
 import com.hzwsunshine.freetime.Utils.NetWorkUtil;
 import com.hzwsunshine.freetime.Utils.ResponseUtils;
 import com.hzwsunshine.freetime.Utils.ViewUtils;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -74,7 +75,7 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
         mRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light, android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-        mFab.setOnClickListener(view -> mRecyclerView.scrollToPosition(0));
+        mFab.setOnClickListener(view -> mRecyclerView.smoothScrollToPosition(0));
     }
 
     public void initData() {
@@ -139,6 +140,7 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
         } else {
             ViewUtils.showToast(getString(R.string.not_connect_netWork));
             mRefreshLayout.setRefreshing(false);
+
         }
     }
 
@@ -152,9 +154,12 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
 
     public void adapterListener(BFAdapter pAdapter) {
         pAdapter.setOnItemClickListener((view, position) -> {
-            Intent intent = new Intent(getActivity(), ShowImageActivity.class);
-            intent.putExtra("imgUrl", cacheList.get(position).getPics().get(0));
-            startActivity(intent);
+            String url=cacheList.get(position).getPics().get(0);
+            if(Application.imageWH.get(url)!=null){
+                Intent intent = new Intent(getActivity(), ShowImageActivity.class);
+                intent.putExtra("imgUrl", url);
+                startActivity(intent);
+            }
         });
     }
 
@@ -233,9 +238,10 @@ public class BeautyFunnyFragment extends BaseFragment implements SwipeRefreshLay
             if (mRefreshLayout.isRefreshing()) {
                 mRefreshLayout.setRefreshing(false);
             }
-            if(adapter!=null){
+            if (adapter != null) {
                 adapter.removeFooterView();
             }
         }
     }
+
 }

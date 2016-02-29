@@ -21,8 +21,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".Activity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/SplashActivityTheme">
+            android:screenOrientation="portrait">
+            <!--android:theme="@style/SplashActivityTheme"-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -63,14 +63,6 @@
         </activity>
         <activity android:name=".Zero.TestActivity">
         </activity>
-
-        <service
-            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
-            android:enabled="false"
-            android:process=":leakcanary" />
-        <service
-            android:name="com.squareup.leakcanary.DisplayLeakService"
-            android:enabled="false" />
 
     </application>
 

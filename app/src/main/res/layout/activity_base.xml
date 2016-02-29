@@ -10,24 +10,10 @@
 
     <include layout="@layout/toolbar"/>
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/view_baseContentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <FrameLayout
-            android:id="@+id/view_baseContentView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        </FrameLayout>
-
-        <TextView
-            android:id="@+id/showLoading"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FFFFFF"
-            android:gravity="center"
-            android:visibility="gone"
-            android:text="正在加载数据..."/>
-    </RelativeLayout>
+    </FrameLayout>
 
 </LinearLayout>

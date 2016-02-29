@@ -42,7 +42,7 @@ public abstract class ResponseUtils implements Response.Listener<String>, Respon
     private void volleyErrorInfo(VolleyError error) {
         String errors = error.toString();
         if (errors.contains("NoConnectionError")) {
-            ViewUtils.showToast("好像断网了...");
+//            ViewUtils.showToast("好像断网了...");
         } else if (errors.contains("SERVERERROR")) {
             ViewUtils.showToast("服务器未响应");
         } else if (errors.contains("TimeoutError")) {
